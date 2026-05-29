@@ -25,7 +25,9 @@ class VideoMetadata(BaseModel):
 
     def compute_engagement_rate(self):
         if self.views > 0:
-            self.engagement_rate = round(((self.likes + self.comments) / self.views) * 100, 4)
+            rate = ((self.likes + self.comments) / self.views) * 100
+            # Cap at 100% — anything higher means views data is unreliable
+            self.engagement_rate = round(min(rate, 100.0), 2)
         else:
             self.engagement_rate = 0.0
 

@@ -73,3 +73,5 @@ chroma_data/
 
 # ChromaDB
 *.parquet
+
+cookies.txt
